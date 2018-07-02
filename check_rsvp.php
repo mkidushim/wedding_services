@@ -16,6 +16,12 @@ extract($object);
 
 $info = array();
 
+//Message to be sent until invitations are sent out.
+$response['content'] = 'Please come back when you have received your inviations.';
+respond($response);
+
+
+
 $sql ="SELECT * FROM `guest_list` WHERE `name`='$name' AND `rsvp`='1'";
 $res = $m->query($sql);
 if($res->num_rows > 0){
@@ -25,7 +31,7 @@ if($res->num_rows > 0){
 $sql ="SELECT * FROM `guest_list` WHERE `name`='$name'";
 $res = $m->query($sql);
 if($res->num_rows < 1){
-  $response['content'] = 'It looks like your name does not appear to be on the guest list.  If you feel you have reached this in error, please contact Mike Kidushim at mkidushim@gmail.com or (949)302-7401';
+  $response['content'] = 'It looks like your name is not on the guest list.  If you feel you have reached this in error, please contact Mike Kidushim at mkidushim@gmail.com or (949)302-7401';
   respond($response);
 }
 $info = $res->fetch_assoc();
