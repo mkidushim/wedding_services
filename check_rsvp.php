@@ -17,7 +17,7 @@ extract($object);
 $info = array();
 
 //Message to be sent until invitations are sent out.
-$response['content'] = 'Please come back when you have received your invites.';
+$response['content'] = 'Coming soon, please come back once invitations have gone out.';
 respond($response);
 
 
