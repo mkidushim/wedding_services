@@ -38,7 +38,7 @@ foreach ($rsvp as $key => $value) {
     $sql = "INSERT INTO `guest_list` (`name`,`email`,`song`,`message`,`rsvp`,`coming`) VALUES('$name','$email','$song','$message','1','$coming')";
   }else{
     if($key == 0){
-      $sql = "UPDATE `guest_list` SET `name`='$name',`email`='$email',`song`='$song',`message`='$message',`rsvp`='1',`coming`='$coming' WHERE `id`='$id'";  
+      $sql = "UPDATE `guest_list` SET `email`='$email',`song`='$song',`message`='$message',`rsvp`='1',`coming`='$coming' WHERE `id`='$id'";  
     }
     $sql = "UPDATE `guest_list` SET `email`='$email',`song`='$song',`message`='$message',`rsvp`='1',`coming`='$coming' WHERE `id`='$id'";
   }
