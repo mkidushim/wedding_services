@@ -15,7 +15,7 @@ $name = cleanInput($name);
 
 $info = array();
 
-$sql ="SELECT `name`,`id` FROM `guest_list` WHERE `name` != '$name' AND `rsvp`='0' ORDER BY `name` ASC";
+$sql ="SELECT `name`,`id` FROM `guest_list` WHERE `name` != '$name' AND `plus_one`='0' AND `rsvp`='0' ORDER BY `name` ASC";
 $res = $m->query($sql);
 while ($e= $res->fetch_assoc()) {
   $info[] = $e;
