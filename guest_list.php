@@ -8,17 +8,27 @@
   $sql ="SELECT `name`,`rsvp`,`coming`,`email`,`song`,`message` FROM `guest_list`";
   $res = $m->query($sql);
   while ($e= $res->fetch_assoc()) {
+
+
     $coming = $e['coming'];
     $rsvp = $e['rsvp'];
-    $e['rsvp'] = 'no';
-    if($rsvp == '1'){
-      $e['rsvp'] = 'yes';
+
+    if($rsvp == '0'){
+      $status = 'No Response';
     }
 
-    $e['coming'] = 'no';
-    if($coming == '1'){
-      $e['coming'] = 'yes';
+
+    if($rsvp == '1' && $coming == '0'){
+      $status = 'Not Coming';
     }
+
+
+    if($coming == '1'){
+      $status = 'Attending';
+    }
+
+    $e['status'] = $status;
+
     $info[] = $e;
   }
 
