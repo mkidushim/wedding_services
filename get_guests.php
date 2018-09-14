@@ -23,5 +23,6 @@ while ($e= $res->fetch_assoc()) {
 
 $response['status'] = 'OK';
 $response['content'] = $info;
+$response['name'] = $name;
 respond($info);
 ?>
