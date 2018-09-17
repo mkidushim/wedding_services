@@ -37,16 +37,22 @@ if($res->num_rows > 0){
 $sql ="SELECT * FROM `guest_list` WHERE `name`='$name'";
 $res = $m->query($sql);
 if($res->num_rows < 1){
-  $response['content'] = 'It looks like your name is not on the guest list.  If you feel you have reached this in error, please contact Mike Kidushim at mkidushim@gmail.com or (949)302-7401';
-  $req = json_encode($_REQUEST);
-  $sql_log = "INSERT INTO `log` (`name`,`request`) VALUES ('$name','$req')";
+  // $response['content'] = 'It looks like your name is not on the guest list.  If you feel you have reached this in error, please contact Mike Kidushim at mkidushim@gmail.com or (949)302-7401';
+  // $req = json_encode($_REQUEST);
+  $sql_log = "INSERT INTO `guest_list` (`name`) VALUES ('$name')";
   $res_log = $m->query($sql_log);
-  respond($response);
-}
-$info = $res->fetch_assoc();
+  // respond($response);
+  $uid = $m->insert_id;
+  $email = '';
+  $info['id'] = $uid;
+  $info['plus_one'] = '0';
+}else{
 
-$uid = $info['id'];
-$email = $info['email'];
+  $info = $res->fetch_assoc();
+  $uid = $info['id'];
+  $email = $info['email'];
+}
+
 $info['token'] = md5($name);
 $info['email'] =$email;
 $info['name'] =$name;
